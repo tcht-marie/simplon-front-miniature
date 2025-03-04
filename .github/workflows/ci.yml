@@ -27,10 +27,10 @@ jobs:
         run: npm install --no-cache --prefer-online
 
       - name: Install lighthouse
-        run: npm install -g @lhci/cli@0.14.x
+        run: npm install -g @lhci/cli@latest
 
       - name: Build project
         run: npm run build
 
       - name: Run lighthouse
-        run: lhci autorun --max-wait-for-load=60000
+        run: lhci autorun --max-wait-for-load=60000 --verbose
