@@ -15,13 +15,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4.2.2
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4.2.0
         with:
           node-version: 23
+
+      - name: Désactiver Nexus et forcer npm public
+        run: |
+          echo "registry=https://registry.npmjs.org/" > ~/.npmrc
+          echo "strict-ssl=false" >> ~/.npmrc
+          npm config list
+
+      - name: Supprimer éventuelles dépendances Nexus
+        run: rm -rf node_modules package-lock.json
 
       - name: Install dependencies
         run: npm install --no-cache --prefer-online
@@ -33,4 +42,4 @@ jobs:
         run: npm run build
 
       - name: Run lighthouse
-        run: lhci autorun --max-wait-for-load=60000 --verbose
+        run: lhci autorun --max-wait-for-load=60000
