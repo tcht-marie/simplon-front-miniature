@@ -24,19 +24,7 @@ jobs:
           node-version: 23
 
       - name: Install dependencies
-        run: npm install
+        run: npm install && npm install -g @lhci/cli@0.14.x
 
       - name: Build project
-        run: npm run build
-
-  lighthouseci:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: npm install && npm install -g @lhci/cli@0.14.x
-      - run: npm run build
-      - run: lhci autorun
+        run: npm run build && lhci autorun
