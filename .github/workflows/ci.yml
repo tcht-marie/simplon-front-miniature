@@ -29,12 +29,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Upload build artifact
-        uses: actions/download-artifact@v4.1.9
-        with:
-          name: build
-          path: dist
-
   lighthouseci:
     runs-on: ubuntu-latest
 
