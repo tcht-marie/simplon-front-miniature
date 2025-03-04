@@ -24,8 +24,8 @@ jobs:
           node-version: 23
 
       - name: Install dependencies
-        run: npm install
-      
+        run: npm install --no-cache --prefer-online
+
       - name: Install lighthouse
         run: npm install -g @lhci/cli@0.14.x
 
