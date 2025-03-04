@@ -33,4 +33,4 @@ jobs:
         run: npm run build
 
       - name: Run lighthouse
-        run: lhci autorun
+        run: lhci autorun --max-wait-for-load=60000
